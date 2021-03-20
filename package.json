@@ -1,0 +1,22 @@
+{
+  "name": "bot-discord",
+  "version": "1.0.0",
+  "description": "Le bot discord créer par DieuGinette",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DieuGinette/RyukBot.git"
+  },
+  "author": "DieuGinette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DieuGinette/RyukBot/issues"
+  },
+  "homepage": "https://github.com/DieuGinette/RyukBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
