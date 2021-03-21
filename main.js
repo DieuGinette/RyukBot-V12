@@ -14,6 +14,10 @@ const command = args.shift().toLowerCase();
 if (command === 'ping') message.channel.send("Pong!")
 if (command === 'serveur') message.channel.send(`Tu es actuellement sur le serveur ${message.guild.name}`);
 if (command === 'utilisateur') message.channel.send(`Tu es l'utilisateur ${message.author.tag}`);
+if (command === 'utilisateurinfo') {
+  const user_mention = message.mentions.users.first();
+  message.channel.send(`Voici le tag de la personne mentionné: ${user_mention.tag}`)
+}
 });
 
 client.login(TOKEN);
