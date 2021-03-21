@@ -1,3 +1,4 @@
+const fs = require("fs");
 const { Client } = require('discord.js');
 const { TOKEN, PREFIX } = require('./config');
 const client = new Client();
