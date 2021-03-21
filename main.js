@@ -7,7 +7,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-if (message.content === `${PREFIX}ping`) message.channel.send("Pong!")
+if (message.content.startsWith(`${PREFIX}ping`)) message.channel.send("Pong!")
 });
 
 client.login(TOKEN);
