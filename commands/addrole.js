@@ -12,5 +12,6 @@ module.exports = {
             .catch(e => console.log(e));
     } else {
         message.channel.send("Le rôle n'existe pas!");
+     }
     }
-}
+}   
