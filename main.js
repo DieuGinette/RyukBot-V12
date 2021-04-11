@@ -23,10 +23,12 @@ loadCommands();
 client.on('message', message => {
 if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 const args = message.content.slice(PREFIX.length).split(/ +/);
-const command = args.shift().toLowerCase();
+const commandName = args.shift().toLowerCase();
 
-if (!client.commands.has(command)) return;
-client.commands.get(command).run(client, message, args);
+if (!client.commands.has(commandName)) return;
+const command = client.commands.get(commandName);
+
+command.run(client, message, args);
 });
 
 client.on('ready', () => console.log(`Connecté en tant que ${client.user.tag}!`));
