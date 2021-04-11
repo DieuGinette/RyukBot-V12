@@ -28,6 +28,14 @@ const commandName = args.shift().toLowerCase();
 if (!client.commands.has(commandName)) return;
 const command = client.commands.get(commandName);
 
+if (command.help.args && !args.length) {
+  let noArgsReply = `Il nous faut des argumets pour cette commande, ${message.author}!`;
+
+  if (command.help.usage) noArgsReply += `\nVoici comment utiliser la commande: \`${PREFIX}${command.help.name} ${command.help.usage}\``
+
+  return message.channel.send(noArgsReply);
+}
+
 command.run(client, message, args);
 });
 
