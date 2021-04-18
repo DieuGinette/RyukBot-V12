@@ -4,7 +4,7 @@ const { readdirSync } = require("fs");
 
 
 const client = new Client();
-client.commands = new Collection();
+["commands", "cooldowns"].forEach(x => client[x] = new Collection());
 
 const loadCommands = (dir ="./commands/") => {
   readdirSync(dir).forEach(dirs => {
@@ -35,6 +35,27 @@ if (command.help.args && !args.length) {
 
   return message.channel.send(noArgsReply);
 }
+
+if(!client.cooldowns.has(command.help.name)) {
+  client.cooldowns.set(command.help.name, new Collection());
+}
+
+const timeNow = Date.now();
+const tStamps = client.cooldowns.get(command.help.name);
+const cdAmount = (command.help.cooldown || 5) * 1000;
+
+if (tStamps.has(message.author.id)) {
+  const cdExpirationTime = tStamps.get(message.author.id) + cdAmount;
+
+   if (timeNow < cdExpirationTime) {
+     timeLeft = (cdExpirationTime - timeNow) / 1000;
+     return message.reply(`Merci d'attendre ${timeLeft.toFixed(0)} seconde(s) avant de ré-utiliser la commande \`${command.help.name}\`.`);
+   }
+}
+
+tStamps.set(message.author.id, timeNow);
+
+setTimeout (() => tStamps.delete(message.author.id), cdAmount);
 
 command.run(client, message, args);
 });
