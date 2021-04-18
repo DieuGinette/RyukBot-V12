@@ -1,6 +1,7 @@
 const { Client, Collection } = require('discord.js');
 const { TOKEN, PREFIX } = require('./config');
 const { readdirSync } = require("fs");
+const { isMaster } = require('cluster');
 
 
 const client = new Client();
