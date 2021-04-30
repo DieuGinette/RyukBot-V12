@@ -26,8 +26,9 @@ if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 const args = message.content.slice(PREFIX.length).split(/ +/);
 const commandName = args.shift().toLowerCase();
 
-if (!client.commands.has(commandName)) return;
-const command = client.commands.get(commandName);
+const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.help.aliases && cmd.help.aliases.includes(commandName));
+
+if (!command) return;
 
 if (command.help.args && !args.length) {
   let noArgsReply = `Il nous faut des argumets pour cette commande, ${message.author}!`;
