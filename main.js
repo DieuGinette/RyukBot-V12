@@ -30,6 +30,8 @@ const command = client.commands.get(commandName) || client.commands.find(cmd => 
 
 if (!command) return;
 
+if (command.help.permissions && !message.member.hasPermission('BAN_MEMBERS')) return message.reply("Tu n'as pas les permissions nécessaires pour utiliser cette commande");
+
 if (command.help.args && !args.length) {
   let noArgsReply = `Il nous faut des argumets pour cette commande, ${message.author}!`;
 

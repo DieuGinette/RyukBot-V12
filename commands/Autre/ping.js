@@ -8,5 +8,6 @@ module.exports.help = {
     description: "Renvoie Pong !",
     cooldown: 10,
     usage: '',
+    permissions: false,
     args: false
 };

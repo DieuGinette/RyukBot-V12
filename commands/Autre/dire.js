@@ -8,5 +8,6 @@ module.exports.help = {
     description: "Répète le message d'un utilisateur !",
     cooldown: 10,
     usage: '<votre_message>',
+    permissions: true,
     args: true
 };
