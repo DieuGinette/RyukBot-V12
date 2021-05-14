@@ -30,6 +30,8 @@ const command = client.commands.get(commandName) || client.commands.find(cmd => 
 
 if (!command) return;
 
+if (command.help.isUserAdmin && message.guild.member(message.mentions.users.first()).hasPermission('BAN_MEMBERS')) return message.reply("Tu ne peux pas utiliser cette commande sur cet utilisateur");
+
 if (command.help.permissions && !message.member.hasPermission('BAN_MEMBERS')) return message.reply("Tu n'as pas les permissions nécessaires pour utiliser cette commande");
 
 if (command.help.args && !args.length) {
